@@ -148,13 +148,16 @@ class ContestsFragment : BaseMainFragment<FragmentContestsBinding>() {
     }
 
     private fun openContestDetails(contestId: String) {
-        // Navigate to contest details fragment
-        // In a full implementation, this would use the navigation component
+        // Navigate to contest details or open edit form
+        val intent = android.content.Intent(context, com.habitrpg.android.habitica.ui.activities.ContestFormActivity::class.java)
+        intent.putExtra(com.habitrpg.android.habitica.ui.activities.ContestFormActivity.CONTEST_ID_KEY, contestId)
+        startActivity(intent)
     }
 
     private fun openContestForm() {
-        // Open contest form activity/fragment
-        // In a full implementation, this would open a form to add a new contest
+        // Open contest form activity to add a new contest
+        val intent = android.content.Intent(context, com.habitrpg.android.habitica.ui.activities.ContestFormActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroy() {
