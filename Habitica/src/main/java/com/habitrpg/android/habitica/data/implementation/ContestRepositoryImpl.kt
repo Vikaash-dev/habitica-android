@@ -7,6 +7,7 @@ import com.habitrpg.android.habitica.models.contests.Contest
 import com.habitrpg.android.habitica.models.contests.ContestList
 import com.habitrpg.android.habitica.modules.AuthenticationHandler
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import java.util.Date
 
@@ -92,7 +93,7 @@ class ContestRepositoryImpl(
     }
 
     override suspend fun markContestParticipated(contestId: String, participated: Boolean): Contest? {
-        val contest = getContest(contestId).map { it }.firstOrNull() ?: return null
+        val contest = getContest(contestId).firstOrNull() ?: return null
         
         localRepository.executeTransaction {
             contest.participated = participated
@@ -111,7 +112,7 @@ class ContestRepositoryImpl(
         totalProblems: Int,
         score: Double
     ): Contest? {
-        val contest = getContest(contestId).map { it }.firstOrNull() ?: return null
+        val contest = getContest(contestId).firstOrNull() ?: return null
         
         localRepository.executeTransaction {
             contest.rank = rank
@@ -124,7 +125,7 @@ class ContestRepositoryImpl(
     }
 
     override suspend fun completeContest(contestId: String): Contest? {
-        val contest = getContest(contestId).map { it }.firstOrNull() ?: return null
+        val contest = getContest(contestId).firstOrNull() ?: return null
         
         localRepository.executeTransaction {
             contest.completed = true
@@ -147,13 +148,5 @@ class ContestRepositoryImpl(
         
         // For now, return empty list
         return ContestList()
-    }
-    
-    private suspend fun <T> Flow<T>.firstOrNull(): T? {
-        return try {
-            kotlinx.coroutines.flow.firstOrNull(this)
-        } catch (e: Exception) {
-            null
-        }
     }
 }
