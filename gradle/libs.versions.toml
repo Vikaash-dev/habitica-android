@@ -3,7 +3,7 @@ minSdk = "26"
 targetSdk = "36"
 wearOsTargetSdk = "34"
 
-agp = "8.10.0"
+agp = "8.7.3"
 amplitude = "1.20.7"
 androidTest = "1.6.1"
 androidTestMonitor = "1.7.2"
