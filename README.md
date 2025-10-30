@@ -2,6 +2,17 @@
 
 [Habitica](https://habitica.com) is an open source habit building program which treats your life like a Role Playing Game. Level up as you succeed, lose HP as you fail, earn money to buy weapons and armor. This repository is related to the Android Native Application.
 
+## 🎯 New Feature: Contest Tracking
+
+Track coding contests from platforms like Codeforces, LeetCode, and CodeChef with Habitica's gamification! Earn XP and gold based on your performance.
+
+- 📅 Track upcoming, ongoing, and past contests
+- 🏆 Record ranks and problems solved
+- 💰 Earn rewards based on performance
+- 📊 View contest history and statistics
+
+See [CONTEST_TRACKING.md](CONTEST_TRACKING.md) for details and [NAVIGATION_INTEGRATION.md](NAVIGATION_INTEGRATION.md) for setup.
+
 It's also on Google Play:
 
 <a href="https://play.google.com/store/apps/details?id=com.habitrpg.android.habitica">

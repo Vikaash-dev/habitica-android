@@ -3,6 +3,7 @@ package com.habitrpg.android.habitica.modules
 import android.content.Context
 import com.habitrpg.android.habitica.data.ApiClient
 import com.habitrpg.android.habitica.data.ChallengeRepository
+import com.habitrpg.android.habitica.data.ContestRepository
 import com.habitrpg.android.habitica.data.CustomizationRepository
 import com.habitrpg.android.habitica.data.FAQRepository
 import com.habitrpg.android.habitica.data.InventoryRepository
@@ -13,6 +14,7 @@ import com.habitrpg.android.habitica.data.TaskRepository
 import com.habitrpg.android.habitica.data.TutorialRepository
 import com.habitrpg.android.habitica.data.UserRepository
 import com.habitrpg.android.habitica.data.implementation.ChallengeRepositoryImpl
+import com.habitrpg.android.habitica.data.implementation.ContestRepositoryImpl
 import com.habitrpg.android.habitica.data.implementation.CustomizationRepositoryImpl
 import com.habitrpg.android.habitica.data.implementation.FAQRepositoryImpl
 import com.habitrpg.android.habitica.data.implementation.InventoryRepositoryImpl
@@ -23,6 +25,7 @@ import com.habitrpg.android.habitica.data.implementation.TaskRepositoryImpl
 import com.habitrpg.android.habitica.data.implementation.TutorialRepositoryImpl
 import com.habitrpg.android.habitica.data.implementation.UserRepositoryImpl
 import com.habitrpg.android.habitica.data.local.ChallengeLocalRepository
+import com.habitrpg.android.habitica.data.local.ContestLocalRepository
 import com.habitrpg.android.habitica.data.local.CustomizationLocalRepository
 import com.habitrpg.android.habitica.data.local.FAQLocalRepository
 import com.habitrpg.android.habitica.data.local.InventoryLocalRepository
@@ -32,6 +35,7 @@ import com.habitrpg.android.habitica.data.local.TaskLocalRepository
 import com.habitrpg.android.habitica.data.local.TutorialLocalRepository
 import com.habitrpg.android.habitica.data.local.UserLocalRepository
 import com.habitrpg.android.habitica.data.local.implementation.RealmChallengeLocalRepository
+import com.habitrpg.android.habitica.data.local.implementation.RealmContestLocalRepository
 import com.habitrpg.android.habitica.data.local.implementation.RealmCustomizationLocalRepository
 import com.habitrpg.android.habitica.data.local.implementation.RealmFAQLocalRepository
 import com.habitrpg.android.habitica.data.local.implementation.RealmInventoryLocalRepository
@@ -207,6 +211,20 @@ class UserRepositoryModule {
         authenticationHandler: AuthenticationHandler
     ): CustomizationRepository {
         return CustomizationRepositoryImpl(localRepository, apiClient, authenticationHandler)
+    }
+
+    @Provides
+    fun providesContestLocalRepository(realm: Realm): ContestLocalRepository {
+        return RealmContestLocalRepository(realm)
+    }
+
+    @Provides
+    fun providesContestRepository(
+        localRepository: ContestLocalRepository,
+        apiClient: ApiClient,
+        authenticationHandler: AuthenticationHandler
+    ): ContestRepository {
+        return ContestRepositoryImpl(localRepository, apiClient, authenticationHandler)
     }
 
     @Provides
