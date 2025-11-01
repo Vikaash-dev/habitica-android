@@ -235,6 +235,20 @@
             </intent-filter>
         </receiver>
 
+        <!-- Coding Contest Reminder Receivers -->
+        <receiver android:name=".receivers.ContestReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver android:name=".receivers.ContestAlarmBootReceiver"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".ui.activities.AddTaskWidgetActivity"
             android:exported="false">
             <intent-filter>
